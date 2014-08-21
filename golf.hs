@@ -1,4 +1,5 @@
 import Data.Char
+import Data.Set
 
 -- palindrome
 palin a = a == reverse a
@@ -25,6 +26,15 @@ is_triangle a b c
 -- next color
 c = cycle ["GREEN", "YELLOW", "RED"]
 next_color w = dropWhile (/= w) c !! 1 
+
+
+-- all items in list are unique 
+-- unique :: [x] -> Bool
+unique [] = error "empty list"
+unique [x] = True
+unique (x:xs) 
+    | x `elem` xs = False 
+	| otherwise = unique xs 
 
 -- fib
 fib :: Int -> Int
